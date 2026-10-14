@@ -1,0 +1,32 @@
+# arc-tracker
+
+A self-hosted tracker for habits and technical skill progress, built with FastAPI.
+
+## Status
+
+🚧 Early development. Not ready for use yet.
+
+Current state:
+- `/health` endpoint
+- Pydantic models for habits and daily entries
+
+Planned: SQLite storage, Docker setup, `/metrics` endpoint, CI with GitHub Actions, minimal web frontend.
+
+## Run locally
+
+Requires Python 3.
+
+```bash
+git clone git@github.com:b-karima/arc-tracker.git
+cd arc-tracker
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+```
+
+Then open http://127.0.0.1:8000/docs for the interactive API documentation.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
