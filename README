@@ -14,7 +14,7 @@ Planned: SQLite storage, Docker setup, `/metrics` endpoint, CI with GitHub Actio
 
 ## Run locally
 
-Requires Python 3.
+Requires Python 3.12+.
 
 ```bash
 git clone git@github.com:b-karima/arc-tracker.git
