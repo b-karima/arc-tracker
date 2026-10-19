@@ -1,7 +1,9 @@
 name: CI
 
 on:
+  # Branches with a PR are covered by pull_request; push only main to avoid double runs.
   push:
+    branches: [main]
   pull_request:
 
 jobs:
