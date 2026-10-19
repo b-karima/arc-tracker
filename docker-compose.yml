@@ -1,0 +1,11 @@
+services:
+  arc-tracker:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - arc-data:/data
+    restart: unless-stopped
+
+volumes:
+  arc-data:

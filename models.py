@@ -1,14 +1,8 @@
-import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, Field
 
 
-class HabitCreate(BaseModel):
-    name: str
-    category: str
+class HabitIn(BaseModel):
+    model_config = ConfigDict(str_strip_whitespace=True)
 
-
-class EntryCreate(BaseModel):
-    habit_id: int
-    date: datetime.date
-    completed: bool = True
-    note: str | None = None
+    name: str = Field(min_length=1, max_length=100)
+    category: str = Field(default="", max_length=50)
