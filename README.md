@@ -8,6 +8,16 @@ A self-hosted habit tracker, built with FastAPI, SQLite and React. The interface
 
 There is no login. Run it on your own machine or home network, not on the open internet.
 
+## Run
+
+Requires Python 3.12+ and Node.js 20+ (`brew install python@3.12 node`).
+
+```bash
+./start.sh
+```
+
+The first run installs everything. Then open http://localhost:8000, or the address it prints for your phone (same Wi-Fi). Data is stored in `arc.db`.
+
 ## Run with Docker
 
 ```bash
@@ -16,23 +26,14 @@ docker compose up -d --build
 
 Then open http://localhost:8000. The data lives in the `arc-data` Docker volume (`/data/arc.db`).
 
-## Run locally
-
-Requires Python 3.12+ and Node.js 20+.
+## Develop
 
 ```bash
-git clone git@github.com:b-karima/arc-tracker.git
-cd arc-tracker
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements-dev.txt
-(cd frontend && npm install && npm run build)
-uvicorn main:app --reload
+venv/bin/pip install -r requirements-dev.txt
+venv/bin/uvicorn main:app --reload
 ```
 
-Then open http://127.0.0.1:8000. Data is stored in `arc.db`; set `ARC_DB` to use another file.
-
-To work on the front-end with hot reload, keep uvicorn running and start Vite in a second terminal:
+Set `ARC_DB` to use another database file. To work on the front-end with hot reload, keep uvicorn running and start Vite in a second terminal:
 
 ```bash
 cd frontend && npm run dev
@@ -43,7 +44,7 @@ Vite serves the app on http://localhost:5173 and forwards `/api` calls to uvicor
 ## Tests
 
 ```bash
-python -m pytest
+venv/bin/python -m pytest
 ```
 
 GitHub Actions runs the tests and builds the Docker image on every push.
